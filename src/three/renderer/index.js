@@ -1,7 +1,8 @@
 import * as THREE from 'three/build/three.module';
+import { cube } from '../models';
  
 var camera, scene, renderer;
-var geometry, material, mesh;
+
 
 init();
 animate();
@@ -12,11 +13,7 @@ function init() {
  
     scene = new THREE.Scene();
  
-    geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
-    material = new THREE.MeshNormalMaterial();
- 
-    mesh = new THREE.Mesh( geometry, material );
-    scene.add( mesh );
+    scene.add( cube );
  
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -35,12 +32,10 @@ function onWindowResize(){
 }
  
 function animate() {
- 
     requestAnimationFrame( animate );
  
-    mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.02;
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.02;
  
     renderer.render( scene, camera );
- 
 }
